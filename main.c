@@ -19,6 +19,13 @@ void *square(void *content)
     return squared_value;
 }
 
+void    specific_case(void *content)
+{
+    char    *tmp = (char *)content;
+    ft_putendl_fd(tmp, 1);
+    free(tmp);
+}
+
 int    main(void)
 {
     t_list    *list;
@@ -49,11 +56,12 @@ int    main(void)
 
     printf("Case specific test\n");
     t_list    *third = ft_lstnew(ft_strdup("TEST"));
-    ft_lstiter(third, writer);
+    // ft_lstiter(third, writer);
     //you can replace free with any function that does sth to the content
     //but must free the element after it.
-    ft_lstdelone(third, free);
+    ft_lstdelone(third, specific_case);
+    // ft_lstdelone(third, free);
     return (0);
 }
 
-//gcc main.c -L. -lft -o run
+//gcc main.c -L. -lft -o run && ./run
